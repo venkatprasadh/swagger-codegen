@@ -45,8 +45,8 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo $(token)
+      echo $(token1)
       cd $(System.DefaultWorkingDirectory)/output
       pip install twine
       python setup.py sdist bdist_wheel
-      python -m twine upload -u __token__ -p $(token) --repository-url https://test.pypi.org/legacy/ dist/* --verbose
+      python -m twine upload -u __token__ -p $(token1) --repository-url https://test.pypi.org/legacy/ dist/* --verbose
