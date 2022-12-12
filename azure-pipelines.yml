@@ -39,6 +39,7 @@ steps:
         -i https://petstore.swagger.io/v2/swagger.json \
         -l csharp \
         -o $(System.DefaultWorkingDirectory)/output 
+        -c $(System.DefaultWorkingDirectory)/config.json
       echo Generate Code END
 - task: DotNetCoreCLI@2
   inputs:
