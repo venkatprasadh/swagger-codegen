@@ -1,0 +1,44 @@
+# Maven
+
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Generate Code START
+      java -jar /home/vsts/work/1/s/executables/swagger-codegen-cli.jar generate \
+        -i https://petstore.swagger.io/v2/swagger.json \
+        -l python \
+        -o /var/tmp/python_api_client
+      echo Generate Code END
+- task: Maven@4
+  inputs:
+    mavenPomFile: 'pom.xml'
+    options: 'clean -Dmaven.test.skip=true'
+    publishJUnitResults: false
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Generate Code START
+      java -jar modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate \
+        -i https://petstore.swagger.io/v2/swagger.json \
+        -l python \
+        -o $(System.DefaultWorkingDirectory)/output 
+        -c $(System.DefaultWorkingDirectory)/config.json
+      echo Generate Code END
+
