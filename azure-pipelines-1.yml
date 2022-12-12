@@ -17,7 +17,7 @@ steps:
     script: |
       echo Generate Code START
       java -jar /home/vsts/work/1/s/executables/swagger-codegen-cli.jar generate \
-        -i https://petstore.swagger.io/v2/swagger.json \
+        -i $(SWAGGER) \
         -l python \
         -o /var/tmp/python_api_client
       echo Generate Code END
