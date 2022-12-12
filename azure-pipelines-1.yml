@@ -48,4 +48,4 @@ steps:
       cd $(System.DefaultWorkingDirectory)/output
       pip install twine
       python setup.py sdist bdist_wheel
-      python -m twine upload -u __token__ -p pypi-AgEIcHlwaS5vcmcCJDI5ZDdlYjBiLWFmYjctNDg3Ni1iOGNkLTFjZGRmODMxMTkzZAACKlszLCI1YmQ3ZjBjZi03MDMyLTQ2ZDMtOTgzNy03ZDA2YWY0NmU0ZmIiXQAABiCCTMGAbIBddgfy38xzGJo5rgkK9N-zpMhyTBqrQVMjow --repository-url https://test.pypi.org/legacy/ dist/* --verbose
+      python -m twine upload -u __token__ -p %TOKEN% --repository-url https://test.pypi.org/legacy/ dist/* --verbose
