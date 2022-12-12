@@ -11,7 +11,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: GenerateCodeFromJar@2
+- task: CmdLine@2
   inputs:
     script: |
       echo Generate Code START
