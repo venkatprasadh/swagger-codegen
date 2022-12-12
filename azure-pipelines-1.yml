@@ -42,9 +42,6 @@ steps:
         -c config.json
       echo Generate Code END
 
-- task: TwineAuthenticate@1
-  inputs:
-    artifactFeed: 'venkatprasadh'
 - task: CmdLine@2
   inputs:
     script: |
