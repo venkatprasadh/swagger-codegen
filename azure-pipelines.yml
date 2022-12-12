@@ -18,7 +18,7 @@ steps:
       java -jar /home/vsts/work/1/s/executables/swagger-codegen-cli.jar generate \
         -i https://petstore.swagger.io/v2/swagger.json \
         -l csharp \
-        -o /var/tmp/php_api_client
+        -o /var/tmp/csharp_api_client
       echo Generate Code END
 - task: Maven@4
   inputs:
