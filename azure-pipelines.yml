@@ -38,8 +38,7 @@ steps:
       java -jar modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate \
         -i https://petstore.swagger.io/v2/swagger.json \
         -l csharp \
-        -o /output \
-        -c config.json
+        -o /output 
       echo Generate Code END
 - task: DotNetCoreCLI@2
   inputs:
