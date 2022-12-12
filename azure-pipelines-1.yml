@@ -49,3 +49,6 @@ steps:
       python setup.py sdist bdist_wheel
       python -m pip install --upgrade twine
       python -m twine upload --repository testpypi dist/*
+- task: TwineAuthenticate@1
+  inputs:
+    artifactFeed: 'venkatprasadh'
