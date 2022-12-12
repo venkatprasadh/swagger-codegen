@@ -1,5 +1,5 @@
 {
-    "packageName": "NewCloud.IoT",
+    "packageName": "NewCloudIoT",
     "packageVersion": "1.0.0",
     "targetFramework": "v5.0",
     "interfacePrefix": "ITcp"
