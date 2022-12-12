@@ -89,6 +89,19 @@
                     <lineEnding>LF</lineEnding>
                 </configuration>
             </plugin>
+            <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
+        <configuration>
+          <!-- Centralize test reports in parent project -->
+          <reportsDirectory>${basedir}/../target/surefire-reports</reportsDirectory>
+          <!-- Sets the VM argument line used for Jacoco when unit tests are run. -->
+          <argLine>
+             -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar ${surefireArgLine}
+          </argLine>
+        </configuration> 
+</plugin>
             <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
