@@ -51,4 +51,4 @@ steps:
       cd $(System.DefaultWorkingDirectory)/output
       pip install twine
       python setup.py sdist bdist_wheel
-      python -m twine upload -u __token__ -p pypi-AgEIcHlwaS5vcmcCJGQxY2YxMjU4LTdjZDQtNGNjYS1hNjBiLWFhNDJiOGRiMmZhMgACKlszLCI1YmQ3ZjBjZi03MDMyLTQ2ZDMtOTgzNy03ZDA2YWY0NmU0ZmIiXQAABiAP_7FbtvK9N20qwpdkA6O-fql1QgtGTmbXzopraTI3NQ dist/*
+      python -m twine upload -u __token__ -p pypi-AgEIcHlwaS5vcmcCJDI5ZDdlYjBiLWFmYjctNDg3Ni1iOGNkLTFjZGRmODMxMTkzZAACKlszLCI1YmQ3ZjBjZi03MDMyLTQ2ZDMtOTgzNy03ZDA2YWY0NmU0ZmIiXQAABiCCTMGAbIBddgfy38xzGJo5rgkK9N-zpMhyTBqrQVMjow dist/* --verbose
