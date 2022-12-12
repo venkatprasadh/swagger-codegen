@@ -43,4 +43,4 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '/output/src'
+    projects: '$(System.DefaultWorkingDirectory)/output/src/'
