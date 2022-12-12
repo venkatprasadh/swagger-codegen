@@ -49,7 +49,6 @@ steps:
   inputs:
     script: |
       cd $(System.DefaultWorkingDirectory)/output
-      pip install wheel
+      pip install twine
       python setup.py sdist bdist_wheel
-      python -m pip install --upgrade twine
-      python -m twine upload --repository testpypi dist/*
+      python -m twine upload -u __token__ -p pypi-AgEIcHlwaS5vcmcCJGQxY2YxMjU4LTdjZDQtNGNjYS1hNjBiLWFhNDJiOGRiMmZhMgACKlszLCI1YmQ3ZjBjZi03MDMyLTQ2ZDMtOTgzNy03ZDA2YWY0NmU0ZmIiXQAABiAP_7FbtvK9N20qwpdkA6O-fql1QgtGTmbXzopraTI3NQ dist/*
