@@ -20,6 +20,16 @@ steps:
         -l python \
         -o /var/tmp/python_api_client
       echo Generate Code END
+- task: MagicChunks@2
+  inputs:
+    sourcePath: '$(System.DefaultWorkingDirectory)/config.json'
+    fileType: 'Auto'
+    targetPathType: 'source'
+    transformationType: 'json'
+    transformations: |
+      {
+        "packageVersion": "$(version)"
+      }
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
