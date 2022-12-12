@@ -1,5 +1,5 @@
 {
-    "packageName": "TrimbleCloud.IoT",
+    "packageName": "NewCloud.IoT",
     "packageVersion": "1.0.0",
     "targetFramework": "v5.0",
     "interfacePrefix": "ITcp"
