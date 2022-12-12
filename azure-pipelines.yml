@@ -11,13 +11,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: CmdLine@2
+- task: GenerateCodeFromJar@2
   inputs:
     script: |
       echo Generate Code START
       java -jar /home/vsts/work/1/s/executables/swagger-codegen-cli.jar generate \
         -i https://petstore.swagger.io/v2/swagger.json \
-        -l php \
+        -l csharp \
         -o /var/tmp/php_api_client
       echo Generate Code END
 - task: Maven@4
@@ -37,6 +37,6 @@ steps:
       echo Generate Code START
       java -jar modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate \
         -i https://petstore.swagger.io/v2/swagger.json \
-        -l php \
+        -l csharp \
         -o /var/tmp/php_api_client
       echo Generate Code END
