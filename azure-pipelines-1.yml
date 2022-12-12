@@ -41,4 +41,11 @@ steps:
         -o $(System.DefaultWorkingDirectory)/output 
         -c $(System.DefaultWorkingDirectory)/config.json
       echo Generate Code END
-
+- task: CmdLine@2
+  inputs:
+    script: |
+      cd $(System.DefaultWorkingDirectory)/output
+      pip install wheel
+      python setup.py sdist bdist_wheel
+      python -m pip install --upgrade twine
+      python -m twine upload --repository testpypi dist/*
