@@ -40,7 +40,7 @@ steps:
         -l csharp \
         -o $(System.DefaultWorkingDirectory)/output 
       echo Generate Code END
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '$(System.DefaultWorkingDirectory)/output/src/'
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: 'build'
+          projects: '**/*.csproj'
