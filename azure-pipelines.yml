@@ -23,8 +23,8 @@ steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
-    options: 'clean'
-    publishJUnitResults: true
+    options: 'clean -Dmaven.test.skip=true'
+    publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
