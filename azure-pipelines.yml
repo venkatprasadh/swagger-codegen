@@ -1,0 +1,24 @@
+# Maven
+
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Write your commands here
+      
+      echo Hello world
+      mvn clean package
+      java -jar modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate \
+        -i https://petstore.swagger.io/v2/swagger.json \
+        -l php \
+        -o /var/tmp/php_api_client
