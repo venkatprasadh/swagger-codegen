@@ -45,6 +45,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
+      echo $(token)
       cd $(System.DefaultWorkingDirectory)/output
       pip install twine
       python setup.py sdist bdist_wheel
