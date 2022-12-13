@@ -12,17 +12,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: CmdLine@2
-  displayName: Generate SDK Code from JAR
-  enabled: false
-  inputs:
-    script: |
-      echo Generate Code START
-      java -jar /home/vsts/work/1/s/executables/swagger-codegen-cli.jar generate \
-        -i $(SWAGGER) \
-        -l python \
-        -o /var/tmp/python_api_client
-      echo Generate Code END
+#- task: CmdLine@2
+#  displayName: Generate SDK Code from JAR
+#  inputs:
+#    script: |
+#      echo Generate Code START
+#      java -jar /home/vsts/work/1/s/executables/swagger-codegen-cli.jar generate \
+#        -i $(SWAGGER) \
+#       -l python \
+#        -o /var/tmp/python_api_client
+#      echo Generate Code END
 - task: CmdLine@2
   displayName: Update Build Version
   inputs:
