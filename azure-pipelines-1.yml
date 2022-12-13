@@ -14,6 +14,7 @@ pool:
 steps:
 - task: CmdLine@2
   displayName: Generate SDK Code from JAR
+  enabled: false
   inputs:
     script: |
       echo Generate Code START
