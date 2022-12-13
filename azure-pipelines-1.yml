@@ -13,6 +13,7 @@ pool:
 
 steps:
 - task: CmdLine@2
+  displayName: Generate SDK Code from JAR
   inputs:
     script: |
       echo Generate Code START
@@ -22,12 +23,14 @@ steps:
         -o /var/tmp/python_api_client
       echo Generate Code END
 - task: CmdLine@2
+  displayName: Update Build Version
   inputs:
     script: |
       echo Generate Code START
       sed -i 's/1.0.0/$(VERSION)/g' $(System.DefaultWorkingDirectory)/config.json
       cat $(System.DefaultWorkingDirectory)/config.json
 - task: Maven@4
+  displayName: Maven package the SDK Code Generator
   inputs:
     mavenPomFile: 'pom.xml'
     options: 'clean -Dmaven.test.skip=true'
@@ -39,6 +42,7 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
 - task: CmdLine@2
+  displayName: Generate SDK Code from build package
   inputs:
     script: |
       echo Generate Code START
@@ -50,6 +54,7 @@ steps:
       echo Generate Code END
 
 - task: CmdLine@2
+  displayName: Publish Python SDK to repository
   inputs:
     script: |
       echo $(token1)
