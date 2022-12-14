@@ -28,6 +28,7 @@ steps:
     script: |
       echo Generate Code START
       sed -i 's/1.0.0/$(VERSION)/g' $(System.DefaultWorkingDirectory)/config.json
+      sed -i 's/NewCloudIoT/$(APINAME)/g' $(System.DefaultWorkingDirectory)/config.json
       cat $(System.DefaultWorkingDirectory)/config.json
 - task: Maven@4
   displayName: Maven package the SDK Code Generator
@@ -42,27 +43,27 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
 - task: CmdLine@2
-  displayName: Generate SDK Code from build package
+  displayName: Generate SDK Code from API Template
   inputs:
     script: |
-      echo Generate Code START
       java -jar modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate \
         -i https://petstore.swagger.io/v2/swagger.json \
         -l python \
         -o $(System.DefaultWorkingDirectory)/output \
         -c config.json
-      echo Generate Code END
+      echo The SDK Client Library for Pet Store is succcessfully generated from API Template(OpenAPI Specification)
 
 - task: CmdLine@2
-  displayName: Build and Test Python SDK
+  displayName: Build and Test the generated Python SDK Client Library
   inputs:
     script: |
       cd $(System.DefaultWorkingDirectory)/output
       pip install twine
       python setup.py sdist bdist_wheel
 - task: CmdLine@2
-  displayName: Publish Python SDK to repository
+  displayName: Publish Python SDK Client Library to test pypi repository
   inputs:
     script: |
       cd $(System.DefaultWorkingDirectory)/output
       python -m twine upload -u __token__ -p $(token1) --repository-url https://test.pypi.org/legacy/ dist/* --verbose
+      echo The SDK Client Library for Pet Store is succcessfully published to  registry.
