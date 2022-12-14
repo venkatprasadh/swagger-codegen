@@ -54,11 +54,15 @@ steps:
       echo Generate Code END
 
 - task: CmdLine@2
-  displayName: Publish Python SDK to repository
+  displayName: Build and Test Python SDK
   inputs:
     script: |
-      echo $(token1)
       cd $(System.DefaultWorkingDirectory)/output
       pip install twine
       python setup.py sdist bdist_wheel
+- task: CmdLine@2
+  displayName: Publish Python SDK to repository
+  inputs:
+    script: |
+      cd $(System.DefaultWorkingDirectory)/output
       python -m twine upload -u __token__ -p $(token1) --repository-url https://test.pypi.org/legacy/ dist/* --verbose
