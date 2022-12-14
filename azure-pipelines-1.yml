@@ -51,7 +51,7 @@ steps:
         -l python \
         -o $(System.DefaultWorkingDirectory)/output \
         -c config.json
-      echo The SDK Client Library for Pet Store is succcessfully generated from API Template(OpenAPI Specification)
+      echo The SDK Client Library for Pet Store is succcessfully generated from API Templaten- OpenAPI Specification
 
 - task: CmdLine@2
   displayName: Build and Test the generated Python SDK Client Library
